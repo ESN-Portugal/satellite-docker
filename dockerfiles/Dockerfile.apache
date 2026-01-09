@@ -1,11 +1,11 @@
 # Dockerfile based on: https://github.com/Chialab/docker-php/blob/master/7.2/apache/Dockerfile
 
-FROM php:7.2-apache
+FROM php:8.2-apache
 LABEL maintainer="dev@chialab.io"
 
 # Create Let's Encrypt Certificate
 RUN apt-get update
-RUN apt-get install certbot python-certbot-apache -y
+RUN apt-get install certbot python3-certbot-apache -y
 
 COPY resources/php.ini-custom "$PHP_INI_DIR/php.ini-custom"
 RUN mv $PHP_INI_DIR/php.ini-custom $PHP_INI_DIR/php.ini

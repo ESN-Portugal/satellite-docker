@@ -10,8 +10,8 @@ install_requirements:
 prepare_images:
 	echo "Preparing Docker Images..."
 	docker build -f dockerfiles/Dockerfile.apache -t apache:satellite .
-	docker pull mysql:5.7
-	docker pull phpmyadmin/phpmyadmin:4.8.0
+	docker pull mysql:8.0
+	docker pull phpmyadmin:5.2
 	echo "Docker images ready!"
 
 generate_satellite:
@@ -24,11 +24,11 @@ generate_satellite:
 
 	echo "Copying required files..."
 	cp resources/Template.docker-compose.yml $(WEBSITES_FOLDER)/$(WEBSITE_NAME)/docker-compose.yml
-	cp resources/satellite-$(SATELLITE_VERSION).tgz $(WEBSITES_FOLDER)/$(WEBSITE_NAME)/website/satellite.tgz
+	cp resources/satellite-$(SATELLITE_VERSION).tar.gz $(WEBSITES_FOLDER)/$(WEBSITE_NAME)/website/satellite.tar.gz
 	cp -r scripts $(WEBSITES_FOLDER)/$(WEBSITE_NAME)/scripts
 
 	echo "Extracting files..."
-	cd $(WEBSITES_FOLDER)/$(WEBSITE_NAME)/website && tar xvf satellite.tgz --strip 1 && rm satellite.tgz
+	cd $(WEBSITES_FOLDER)/$(WEBSITE_NAME)/website && tar xvf satellite.tar.gz --strip 1 && rm satellite.tar.gz
 	cd $(WEBSITES_FOLDER)/$(WEBSITE_NAME)/website && cp sites/default/default.settings.php sites/default/settings.php
 	cd $(WEBSITES_FOLDER)/$(WEBSITE_NAME)/website && mkdir sites/default/files
 	cd $(WEBSITES_FOLDER)/$(WEBSITE_NAME)/website && chgrp -R www-data sites/default/files
