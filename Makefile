@@ -45,7 +45,7 @@ generate_satellite:
 
 start_satellite:
 	[ -z "${WEBSITE_NAME}" ] && echo "The env. variable WEBSITE_NAME must be set!" && exit 1 || echo "Starting Website: $(WEBSITE_NAME)..."
-	cd $(WEBSITES_FOLDER)/$(WEBSITE_NAME) && docker-compose up -d
+	cd $(WEBSITES_FOLDER)/$(WEBSITE_NAME) && docker compose up -d
 
 create_certificate:
 	[ -z "${WEBSITE_NAME}" ] && echo "The env. variable WEBSITE_NAME must be set!" && exit 1 || echo "Creating certificates for Website: $(WEBSITE_NAME)..."
@@ -67,11 +67,11 @@ recreate_certificates:
 
 stop_satellite:
 	[ -z "${WEBSITE_NAME}" ] && echo "The env. variable WEBSITE_NAME must be set!" && exit 1 || echo "Stopping Website: $(WEBSITE_NAME)..."
-	cd $(WEBSITES_FOLDER)/$(WEBSITE_NAME) && docker-compose down
+	cd $(WEBSITES_FOLDER)/$(WEBSITE_NAME) && docker compose down
 
 restart_satellite:
 	[ -z "${WEBSITE_NAME}" ] && echo "The env. variable WEBSITE_NAME must be set!" && exit 1 || echo "Checking website $(WEBSITE_NAME)..."
-	cd $(WEBSITES_FOLDER)/$(WEBSITE_NAME) && docker-compose restart
+	cd $(WEBSITES_FOLDER)/$(WEBSITE_NAME) && docker compose restart
 
 fix_permissions:
 	echo "Fixing permission on Satellite Website $(WEBSITE_NAME)"

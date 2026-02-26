@@ -6,6 +6,7 @@ A working dockerized version of Satellite
 
 Tested successfully on:
 - Ubuntu 18.04.2 LTS
+- Ubuntu 24.04 LTS
 
 ## Installation
 The automated scripts in the current repository were developed with Ubuntu in mind.
@@ -104,7 +105,7 @@ make start_satellite WEBSITE_NAME=<insert_here_the_name_of_your_satellite_websit
 
 - [ESN Satellite](https://satellite.esn.org/)
 - [Docker Installation](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-- [Docker-Compose Installation](https://docs.docker.com/compose/install/)
+- [Docker Compose Installation](https://docs.docker.com/compose/install/) (v2 plugin, installed automatically with Docker CE on Ubuntu 22+/24+)
 - [Git](https://git-scm.com/)
  
 
